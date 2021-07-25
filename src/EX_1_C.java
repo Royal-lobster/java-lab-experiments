@@ -19,7 +19,7 @@ public class EX_1_C {
         Scanner input = new Scanner(System.in);
 
         // Prompt user for input and store it in speeds array
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.print("Enter Racer S" + i + " Speed: ");
             int speed = input.nextInt();
             speeds[i] = speed;
