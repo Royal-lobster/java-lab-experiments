@@ -21,8 +21,10 @@ class calculator implements ActionListener {
 
     // Styled buttons for calculator
     class StyledBtn extends JButton {
-        StyledBtn(String input) {
+        StyledBtn(String input, JPanel panel, ActionListener listener) {
             super(input);
+
+            // Button Styles
             if (input == "*" || input == "/" || input == "+" || input == "-")
                 this.setBackground(new Color(0xff3646));
             else if (input == "=")
@@ -35,6 +37,10 @@ class calculator implements ActionListener {
             this.setForeground(Color.white);
             this.setBorder(BorderFactory.createLineBorder(Color.darkGray));
             this.setFont(new Font("Courier", Font.BOLD, 24));
+
+            // Add the button to the panel and set the action listeners
+            panel.add(this);
+            this.addActionListener(listener);
         }
     }
 
@@ -69,64 +75,25 @@ class calculator implements ActionListener {
         btnPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // create the buttons
-        btn2 = new StyledBtn("2");
-        btn3 = new StyledBtn("3");
-        btn1 = new StyledBtn("1");
-        btnPlus = new StyledBtn("+");
-        btn4 = new StyledBtn("4");
-        btn5 = new StyledBtn("5");
-        btn6 = new StyledBtn("6");
-        btnMinus = new StyledBtn("-");
-        btn7 = new StyledBtn("7");
-        btn8 = new StyledBtn("8");
-        btn9 = new StyledBtn("9");
-        btnMultiply = new StyledBtn("*");
-        btn0 = new StyledBtn("0");
-        btnClear = new StyledBtn("C");
-        btnEqual = new StyledBtn("=");
-        btnDivide = new StyledBtn("/");
+        btn1 = new StyledBtn("1", btnPanel, this);
+        btn2 = new StyledBtn("2", btnPanel, this);
+        btn3 = new StyledBtn("3", btnPanel, this);
+        btnPlus = new StyledBtn("+", btnPanel, this);
 
-        // add the buttons to the panel
-        btnPanel.add(btn1);
-        btnPanel.add(btn2);
-        btnPanel.add(btn3);
-        btnPanel.add(btnPlus);
+        btn4 = new StyledBtn("4", btnPanel, this);
+        btn5 = new StyledBtn("5", btnPanel, this);
+        btn6 = new StyledBtn("6", btnPanel, this);
+        btnMinus = new StyledBtn("-", btnPanel, this);
 
-        btnPanel.add(btn4);
-        btnPanel.add(btn5);
-        btnPanel.add(btn6);
-        btnPanel.add(btnMinus);
+        btn7 = new StyledBtn("7", btnPanel, this);
+        btn8 = new StyledBtn("8", btnPanel, this);
+        btn9 = new StyledBtn("9", btnPanel, this);
+        btnMultiply = new StyledBtn("*", btnPanel, this);
 
-        btnPanel.add(btn7);
-        btnPanel.add(btn8);
-        btnPanel.add(btn9);
-        btnPanel.add(btnMultiply);
-
-        btnPanel.add(btn0);
-        btnPanel.add(btnClear);
-        btnPanel.add(btnEqual);
-        btnPanel.add(btnDivide);
-
-        // add event listeners to all the buttons
-        btn1.addActionListener(this);
-        btn2.addActionListener(this);
-        btn3.addActionListener(this);
-        btnPlus.addActionListener(this);
-
-        btn4.addActionListener(this);
-        btn5.addActionListener(this);
-        btn6.addActionListener(this);
-        btnMinus.addActionListener(this);
-
-        btn7.addActionListener(this);
-        btn8.addActionListener(this);
-        btn9.addActionListener(this);
-        btnMultiply.addActionListener(this);
-
-        btn0.addActionListener(this);
-        btnDivide.addActionListener(this);
-        btnEqual.addActionListener(this);
-        btnClear.addActionListener(this);
+        btnClear = new StyledBtn("C", btnPanel, this);
+        btn0 = new StyledBtn("0", btnPanel, this);
+        btnEqual = new StyledBtn("=", btnPanel, this);
+        btnDivide = new StyledBtn("/", btnPanel, this);
 
         // add all panels to the frame and show frame
         frame.add(displayPanel);
